@@ -20,7 +20,7 @@ Dans la partie formulaire de ce modèle, la classe **FileChooser** est utilisée
 
 Indépendamment de l'interface:
 - la classe Card qui correspond à une carte permet de lui ajouter des propriétés passées en paramètres (nom, numéro, description, image), de modifier ses propriétés, d'effectuer des vérifications (sur des propriétés), de supprimer la carte
-- la classe Collection permet de trouver une carte par son nom ou son numéro, de remplacer une carte par une autre.
+- la classe Collection permet de trouver une carte par son nom ou son numéro, de trouver l'index d'une carte dans l'array, de remplacer une carte par une autre.
 
 
 Les interfaces de création et d'édition auront le même modèle de formulaire. Pour cela il existe une classe abstraite PaintForm qui est un modèle de formulaire de création ou d'édition de carte
