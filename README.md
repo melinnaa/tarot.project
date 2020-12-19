@@ -5,6 +5,7 @@
 
 ## Analyse et modélisation
 (Diagramme)
+L'application permet de créer des cartes avec ses propriétés. L'utilisateur a une interface dans laquelle un menu lui permet de choisir de créer une nouvelle carte ou de consulter sa collection de cartes
 classe Card pour gérer les actions que l'on peut réaliser avec une carte
 classe SearchCard pour gérer les actions que l'on peut réaliser avec un ensemble de cartes, leurs interactions entre elles.
 classe AppManager pour gérer certains paramètres de l'application
