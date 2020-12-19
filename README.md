@@ -5,7 +5,18 @@
 
 ## Analyse et modélisation
 (Diagramme)
-L'application permet de créer des cartes avec ses propriétés. L'utilisateur a une interface dans laquelle un menu lui permet de choisir de créer une nouvelle carte ou de consulter sa collection de cartes
+
+Au lancement de l'application, une interface s'affiche. À travers celle-ci nous pouvons circuler entre les différentes fonctionnalités: création d'une carte, consultation de la collection de cartes, paramètres d'affichage.
+Dans l'interface de création de carte, l'utilisateur insère les propriétés qu'il souhaite et à la validation, une carte s'ajoute à sa collection.
+Dans l'interface de recherche de carte, l'utilisateur effectue sa recherche en fonction de certaines propriétés ou en défilant entre les cartes. Dans cette même section, il pourra ouvrir une interface d'édition de carte et modifier les propriétés d'une carte.
+Dans l'interface de paramètres l'utilisateur aura accès à des fonctionnalités de paramètres de l'application.
+
+La classe abstraite PaintForm est un modèle pour les interfaces de création et d'édition de carte.
+Ce modèle est sectionné en deux parties: une partie de visualisation de carte et une autre de formulaire.
+
+
+Les interfaces de création et d'édition auront le même modèle de formulaire. Pour cela il existe une classe abstraite PaintForm qui est un modèle de formulaire de création ou d'édition de carte
+
 classe Card pour gérer les actions que l'on peut réaliser avec une carte
 classe SearchCard pour gérer les actions que l'on peut réaliser avec un ensemble de cartes, leurs interactions entre elles.
 classe AppManager pour gérer certains paramètres de l'application
