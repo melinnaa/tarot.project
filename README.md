@@ -7,12 +7,20 @@
 (Diagramme)
 
 Au lancement de l'application, une interface s'affiche. À travers celle-ci nous pouvons circuler entre les différentes fonctionnalités: création d'une carte, consultation de la collection de cartes, paramètres d'affichage.
-Dans l'interface de création de carte, l'utilisateur insère les propriétés qu'il souhaite et à la validation, une carte s'ajoute à sa collection.
-Dans l'interface de recherche de carte, l'utilisateur effectue sa recherche en fonction de certaines propriétés ou en défilant entre les cartes. Dans cette même section, il pourra ouvrir une interface d'édition de carte et modifier les propriétés d'une carte.
-Dans l'interface de paramètres l'utilisateur aura accès à des fonctionnalités de paramètres de l'application.
+L'interface principale contient: 
+- une section de création de carte (**instance de classe Creation**): l'utilisateur insère les propriétés qu'il souhaite et à la validation, une carte s'ajoute à sa collection.
+- une section de recherche de carte (**instance de classe Search**): l'utilisateur effectue sa recherche en fonction de certaines propriétés ou en défilant entre les cartes. Dans cette même section, il pourra ouvrir une interface d'édition de carte et modifier les propriétés d'une carte.
+- une section de paramètres (**instance de classe AppManager**)l'utilisateur aura accès à des fonctionnalités de paramètres de l'application.
 
 La classe abstraite PaintForm est un modèle pour les interfaces de création et d'édition de carte.
-Ce modèle est sectionné en deux parties: une partie de visualisation de carte et une autre de formulaire.
+Ce modèle est sectionné en deux parties: 
+- une partie de visualisation de carte : **objet de classe CardView**
+- une partie de formulaire : **objet JPanel**
+Dans la partie formulaire de ce modèle, la classe **FileChooser** est utilisée pour exporter des messages depuis la machine locale.
+
+Indépendamment de l'interface:
+- la classe Card qui correspond à une carte permet de lui ajouter des propriétés passées en paramètres (nom, numéro, description, image), de modifier ses propriétés, d'effectuer des vérifications (sur des propriétés), de supprimer la carte
+- la classe Collection permet de trouver une carte par son nom ou son numéro, de remplacer une carte par une autre.
 
 
 Les interfaces de création et d'édition auront le même modèle de formulaire. Pour cela il existe une classe abstraite PaintForm qui est un modèle de formulaire de création ou d'édition de carte
