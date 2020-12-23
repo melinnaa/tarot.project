@@ -73,3 +73,27 @@ Pour désérialiser de même. J'ai implémenté un algorithme permettant de dét
 ->
 ->
 -> 
+
+## Lecture du futur
+Une section supplémentaire a été créée pour permettre à l'utilisateur tirer des cartes de sa collection afin qu'elles puissent lui prédire son avenir.
+Un tirage ne se déclenche que lorsqu'il existe au moins 4 cartes dans la collection.
+
+**Quel tirage stimule le programme ?**
+Le programme stimule un tirage en croix. 
+
+**Dans ce tirage chaque carte s'interprète différemment en fonction de son placement.**
+- Carte de gauche: état actuel du patient
+- Carte de droite: le problème auquel se confrontera le patient
+- Carte du haut: le conseil donnée par le tirage
+- Carte du bas: prédiction du futur et réponse à la question
+
+**Comment se déroule un tirage ?**
+À partir du moment qu'il y a au moins 4 cartes dans la collection, un tirage se déclenche (instanciation de la classe Draw).
+Le patient doit tout d'abord se poser une question.
+Le tirage prélève 4 cartes au hasard parmi toutes les cartes de la collection. Celles-ci se placent du côté pile en croix.
+À chaque clic sur une carte, celle-ci se retourne, dévoile son image et son interprétation (grâce à sa description) en fonction de son placement dans le tirage.
+
+**Les fonctionnalités:**
+L'utilisateur a à sa disposition un bouton qui lui permet de relancer des tirages à l'infini.
+Le résultat du tirage perdure dans la section dédiée tant que l'utilisateur ne relance pas un tirage ou qu'il ne quitte pas l'application.
+
