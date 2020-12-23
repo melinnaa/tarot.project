@@ -78,7 +78,13 @@ La classe Interface contient tous les panels nécessaires pour l'affichage de ch
 Elle hérite de la classe JFrame et est décomposée en 2 panels: le menu (header), le panel principal.
 Composition des panels principaux:
 - Le menu contient les boutons nécessaire à la navigation entre les différentes fonctionnalités de l'application
-- Le panel principal contient tous les panels dédiés à chaque section tous empilés les uns en-dessous des autres avec la CardLayout (CreationPanel, CollectionPanel, DrawPanel, ManagerPanel)
+- Le panel principal contient tous les sous-panels dédiés à chaque section tous empilés les uns en-dessous des autres avec la CardLayout
+
+Les sous-panels sectionnaires:
+- CreationPanel: section de création de carte, l'utilisateur insère les propriétés qu'il souhaite et à la validation, une carte s'ajoute à sa collection
+- CollectionPanel: section de recherche et gestion dans la collection, l'utilisateur effectue sa recherche en fonction de certaines propriétés ou en défilant entre les cartes. Dans cette même section, il pourra supprimer une carte et ouvrir une interface d'édition de carte.
+- DrawPanel: section de tirage de cartes, stimulation d'un tirage du jeu de divination.
+- ManagerPanel: section de paramètres, l'utilisateur aura accès à des paramètres d'interfaçage de l'application.
 
 Comment la consigne de découplage entre les fonctionnalités et l'aspect d'interfaçage a été appliquée ?
 Chacune de ces classes panels est conçue de façon à ce qu'elle ne soit qu'un canal entre les actions de l'utilisateur et les classes métiers.
