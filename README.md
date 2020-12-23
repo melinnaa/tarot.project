@@ -80,6 +80,13 @@ Composition des panels principaux:
 - Le menu contient les boutons nécessaire à la navigation entre les différentes fonctionnalités de l'application
 - Le panel principal contient tous les panels dédiés à chaque section tous empilés les uns en-dessous des autres avec la CardLayout (CreationPanel, CollectionPanel, DrawPanel, ManagerPanel)
 
+Comment la consigne de découplage entre les fonctionnalités et l'aspect d'interfaçage a été appliquée ?
+Chacune de ces classes panels est conçue de façon à ce qu'elle ne soit qu'un canal entre les actions de l'utilisateur et les classes métiers.
+Par exemple la classe CreationPanel va uniquement disposer les éléments de l'interface graphique et vérifier si les entrées de l'utilisateur sont valides pour pouvoir les traîter avec les méthodes de la classe métier Card. La vérification s'effectue avec des méthodes statiques de la classe Card (canBeCreated).
+
+Comment un tiers peux rajouter une fonctionnalité ?
+Si l'on souhaite rajouter une fonctionnalité il suffira de créer une méthode dans la classe métier Card, de la tester, puis de rajouter un élément graphique dans CreationPanel avec une action qui permettra d'allier les 2 classes.
+
 ## Lecture du futur
 Une section supplémentaire a été créée pour permettre à l'utilisateur tirer des cartes de sa collection afin qu'elles puissent lui prédire son avenir.
 Un tirage ne se déclenche que lorsqu'il existe au moins 4 cartes dans la collection.
