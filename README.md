@@ -64,11 +64,11 @@ Ce paquet contient des éléments de type Card.
 Pour sérialiser on utilise Gson.
 Pour désérialiser de même. J'ai implémenté un algorithme permettant de détecter en fonction des chaines de caractères du fichier json où est ce que commençait le code d'un objet Card.
 
-À quels moments s'exécute la sérialisation/déserialisation ?
-->
-->
-->
--> 
+*À quels moments s'exécute la sérialisation/déserialisation ?*
+- Au démarrage de l'application (désérialisation seulement)
+- À l'ajout d'une carte dans la collection
+- À la suppression d'au moins une carte
+
 ## Interface graphique
 La classe Interface contient tous les panels nécessaires pour l'affichage de chaque section.
 Elle hérite de la classe JFrame et est décomposée en 2 panels: le menu (header), le panel principal.
@@ -87,11 +87,11 @@ Ce modèle est sectionné en deux parties:
 - une partie de visualisation de carte : **objet de classe CardView**
 - une partie de formulaire : **objet JPanel**
 
-Comment la consigne de découplage entre les fonctionnalités et l'aspect d'interfaçage a été appliquée ?
+*Comment la consigne de découplage entre les fonctionnalités et l'aspect d'interfaçage a été appliquée ?*
 Chacune de ces classes panels est conçue de façon à ce qu'elle ne soit qu'un canal entre les actions de l'utilisateur et les classes métiers.
 Par exemple la classe CreationPanel va uniquement disposer les éléments de l'interface graphique et vérifier si les entrées de l'utilisateur sont valides pour pouvoir les traîter avec les méthodes de la classe métier Card. La vérification s'effectue avec des méthodes statiques de la classe Card (canBeCreated).
 
-Comment un tiers peux rajouter une fonctionnalité ?
+*Comment un tiers peut rajouter une fonctionnalité ?*
 Si l'on souhaite rajouter une fonctionnalité il suffira de créer une méthode dans la classe métier Card, de la tester, puis de rajouter un élément graphique dans CreationPanel avec une action qui permettra d'allier les 2 classes.
 
 ## Lecture du futur
