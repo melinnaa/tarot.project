@@ -73,6 +73,12 @@ Pour désérialiser de même. J'ai implémenté un algorithme permettant de dét
 ->
 ->
 -> 
+## Interface graphique
+La classe Interface contient tous les panels nécessaires pour l'affichage de chaque section.
+Elle hérite de la classe JFrame et est décomposée en 2 panels: le menu (header), le panel principal.
+Composition des panels principaux:
+- Le menu contient les boutons nécessaire à la navigation entre les différentes fonctionnalités de l'application
+- Le panel principal contient tous les panels dédiés à chaque section tous empilés les uns en-dessous des autres avec la CardLayout (CreationPanel, CollectionPanel, DrawPanel, ManagerPanel)
 
 ## Lecture du futur
 Une section supplémentaire a été créée pour permettre à l'utilisateur tirer des cartes de sa collection afin qu'elles puissent lui prédire son avenir.
