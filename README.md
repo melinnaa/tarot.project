@@ -47,15 +47,16 @@ Celle-ci vérifie si:
 
 La classe Card ne pouvait que jusqu'à présent créer une carte et vérifier les propriétés insérées.
 
-Nous rajoutons une fonctionnalité pour mettre à jour la carte courante.
-De nouvelles méthodes permettent de mettre à jour le nom, l'arcane et la description.
+Nous rajoutons une méthode ```canBeUpdated(String name, String arcana, String description, File img)``` qui agira presque de la même façon que  ```canBeCreated(String name, String arcana, String description, File img)``` pour vérifier si les propriétés insérées sont valables afin de mettre à jour la carte. 
 
-On rajoute également une méthode qui permet d'ajouter une image locale.
-La nouvelle classe FileChooser permettera à l'utilisateur de charger un fichier (dans notre cas le fichier devra être au format jpeg/png)
+Après cette vérification nous rajoutons la méthode ```setProperties(String name, String arcana, String description, File img)``` pour mettre à jour la carte courante. Celle-ci contient des setters pour mettre individuellement à jour le nom, l'arcane, la description et l'image.
+
+La nouvelle classe FileChooser permet à l'utilisateur de charger un fichier (dans notre cas le fichier devra être au format jpeg/png).
+Cette classe sera instanciée lorsque nous développerons l'interface graphique: au clic sur un bouton, nous appelerons alors la classe.
 
 On créer une autre classe Collection qui sera dédiée à la consultation de la collection de cartes.
 Celle-ci contient un array qui contient lui même toutes les cartes créées par l'utilisateur.
-Des méthodes permettent trouver une carte à partir de son nom ou de son numéro.
+Des méthodes permettent trouver une carte à partir de son nom ou de son numéro car ces propriétés sont uniques.
 
 ## Sauvegarde
 Nous sauvegardons le paquet de carte du joueur grâce à la sérialisation en JSON.
