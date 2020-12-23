@@ -33,10 +33,14 @@ Une même arcane peut être utilisée par plusieurs cartes.
 Le nom, l'arcane, la description son choisies par l'utilisateur.
 Le numéro est attribué automatiquement par le programme (le plus petit numéro disponible est attribué à la carte qui va être créée).
 
-Les vérifications s'effectuent pour voir si une carte peut bien être créée.
-Ces vérifications utilisent des méthodes de vérifications plus précises:
-- si le nom que l'on souhaite ajouter à une carte a déjà été utilisé
-- si l'arcane insérée en est bien une: on vérifie si cette arcane est présente dans le tableau d'arcanes
+Des vérifications s'effectuent pour voir si une carte peut bien être créée avec la méthode statique 
+
+```canBeCreated(String name, String arcana, String description, File img)```
+
+Celle-ci vérifie si:
+- le nom que l'on souhaite ajouter à une carte n'a pas déjà été utilisé (appel de isNameUsed())
+- l'arcane insérée en est bien une (appel de isArcana())
+- la description et le fichier inséré ne sont pas égaux à null
 
 
 ## Extension et recherche
