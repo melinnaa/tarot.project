@@ -5,7 +5,7 @@
 
 ## Analyse et modélisation
 (Diagramme)
-$\color{color-8884F5}{wesh}$
+$\color{#8884F5}{wesh}$
 Au lancement de l'application, une interface s'affiche. À travers celle-ci nous pouvons circuler entre les différentes fonctionnalités: création d'une carte, consultation de la collection de cartes, tirage de cartes, paramètres d'affichage.
 
 Classes métiers:
