@@ -101,7 +101,7 @@ Un tirage ne se déclenche que lorsqu'il existe au moins 4 cartes dans la collec
 **Quel tirage stimule le programme ?**
 Le programme stimule un tirage en croix. 
 
-**Dans ce tirage chaque carte s'interprète différemment en fonction de son placement.**
+**Dans ce tirage chaque carte s'interprète différemment en fonction de son placement:**
 - Carte de gauche: état actuel du patient
 - Carte de droite: le problème auquel se confrontera le patient
 - Carte du haut: le conseil donnée par le tirage
