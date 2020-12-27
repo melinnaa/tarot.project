@@ -87,15 +87,18 @@ Elle hérite de la classe JFrame et est décomposée en 2 panels: le menu (heade
 - **ManagerPanel:** section de paramètres, l'utilisateur aura accès à des paramètres d'interfaçage de l'application.
 
 La **classe abstraite PaintForm** est un modèle pour les interfaces de création et d'édition de carte.
+
 Ce modèle est sectionné en deux parties: 
 - une partie de visualisation de carte : **objet de classe CardView**
 - une partie de formulaire : **objet JPanel**
 
 *Comment la consigne de découplage entre les fonctionnalités et l'aspect d'interfaçage a été appliquée ?*
+
 Chacune de ces classes panels est conçue de façon à ce qu'elle ne soit qu'un canal entre les actions de l'utilisateur et les classes métiers.
 Par exemple la classe CreationPanel va uniquement disposer les éléments de l'interface graphique et vérifier si les entrées de l'utilisateur sont valides pour pouvoir les traîter avec les méthodes de la classe métier Card. La vérification s'effectue avec des méthodes statiques de la classe Card (canBeCreated).
 
 *Comment un tiers peut rajouter une fonctionnalité ?*
+
 Si l'on souhaite rajouter une fonctionnalité il suffira de créer une méthode dans la classe métier Card, de la tester, puis de rajouter un élément graphique dans CreationPanel avec une action qui permettra d'allier les 2 classes.
 
 ## Lecture du futur
@@ -104,6 +107,7 @@ Une section supplémentaire a été créée pour permettre à l'utilisateur tire
 Un tirage ne se déclenche que lorsqu'il existe au moins 4 cartes dans la collection.
 
 **Quel tirage stimule le programme ?**
+
 Le programme stimule un tirage en croix. 
 
 **Dans ce tirage chaque carte s'interprète différemment en fonction de son placement:**
@@ -113,12 +117,14 @@ Le programme stimule un tirage en croix.
 - Carte du bas: prédiction du futur et réponse à la question
 
 **Comment se déroule un tirage ?**
+
 À partir du moment qu'il y a au moins 4 cartes dans la collection, un tirage se déclenche (instanciation de la classe Draw).
 Le patient doit tout d'abord se poser une question.
 Le tirage prélève 4 cartes au hasard parmi toutes les cartes de la collection. Celles-ci se placent du côté pile en croix.
 À chaque clic sur une carte, celle-ci se retourne, dévoile son image et son interprétation (grâce à sa description) en fonction de son placement dans le tirage.
 
 **Les fonctionnalités:**
+
 L'utilisateur a à sa disposition un bouton qui lui permet de relancer des tirages à l'infini.
 Le résultat du tirage perdure dans la section dédiée tant que l'utilisateur ne relance pas un tirage ou qu'il ne quitte pas l'application.
 
