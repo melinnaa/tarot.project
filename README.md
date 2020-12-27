@@ -1,13 +1,14 @@
 # Tarot project
 
 ## Introduction
+Le but du projet Mystic Tarot était de créer un logiciel permettant de créer ses propres cartes de Tarot, de pouvoir naviguer dans sa collection, de modifier ses cartes puis d'implémenter si possible un jeu de divination.
 
+Le but était de créer une interface graphique avec toutes ces fonctionnalités grâce à la librairie Swing et de structurer le code de façon à faciliter l'ajout de nouvelles fonctionnalités.
 
 ## Analyse et modélisation
+Au lancement de l'application, une interface s'affiche. À travers celle-ci nous pouvons circuler entre les différentes fonctionnalités: création d'une carte, consultation de la collection de cartes, tirage de cartes, paramètres d'affichage.
 
 Schéma type UML de l'architecture du programme: https://github.com/melinnaa/tarot.project/blob/master/UML%20Tarot.pdf
-
-Au lancement de l'application, une interface s'affiche. À travers celle-ci nous pouvons circuler entre les différentes fonctionnalités: création d'une carte, consultation de la collection de cartes, tirage de cartes, paramètres d'affichage.
 
 **Classes métiers:**
 - la classe **Card** qui correspond à une carte permet de lui ajouter des propriétés passées en paramètres (nom, description, image), de modifier ses propriétés, de lui attribuer un numéro automatiquement, d'effectuer des vérifications (sur des propriétés), de supprimer la carte.
@@ -85,7 +86,7 @@ Elle hérite de la classe JFrame et est décomposée en 2 panels: le menu (heade
 - **CreationPanel:** section de création de carte, l'utilisateur insère les propriétés qu'il souhaite et à la validation, une carte s'ajoute à sa collection
 - **CollectionPanel:** section de recherche et gestion dans la collection, l'utilisateur effectue sa recherche en fonction de certaines propriétés ou en défilant entre les cartes. Dans cette même section, il pourra supprimer une carte et ouvrir une interface d'édition de carte.
 - **DrawPanel:** section de tirage de cartes, stimulation d'un tirage du jeu de divination.
-- **ManagerPanel:** section de paramètres, l'utilisateur aura accès à des paramètres d'interfaçage de l'application.
+- **ManagerPanel:** section de paramètres, l'utilisateur aura accès à des paramètres d'interfaçage de l'application notamment pour le choix des couleurs (sauvegarde par la sérialisation).
 
 La **classe abstraite PaintForm** est un modèle pour les interfaces de création et d'édition de carte.
 
@@ -128,4 +129,14 @@ Le tirage prélève 4 cartes au hasard parmi toutes les cartes de la collection.
 
 L'utilisateur a à sa disposition un bouton qui lui permet de relancer des tirages à l'infini.
 Le résultat du tirage perdure dans la section dédiée tant que l'utilisateur ne relance pas un tirage ou qu'il ne quitte pas l'application.
+
+## Conclusion
+J'ai pu créer toutes les principales fonctionnalités demandées. Pour faciliter l'expérience utilisateur j'ai également bien veillé à insérer autant de boutons que nécessaire. 
+
+Mes plus grandes difficultés se sont concentrées au niveau de la désérialisation des données (Card, couleurs).
+
+J'ai beaucoup apprécié ce projet qui a permis de m'exercer en Java de manière amusante et visuelle.
+
+Pour plus de détails sur chaque classe veuillez consulter la javadoc.
+
 
