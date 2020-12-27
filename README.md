@@ -131,12 +131,10 @@ L'utilisateur a à sa disposition un bouton qui lui permet de relancer des tirag
 Le résultat du tirage perdure dans la section dédiée tant que l'utilisateur ne relance pas un tirage ou qu'il ne quitte pas l'application.
 
 ## Conclusion
-J'ai pu créer toutes les principales fonctionnalités demandées. Pour faciliter l'expérience utilisateur j'ai également bien veillé à insérer autant de boutons que nécessaire. 
+J'ai pu créer toutes les principales fonctionnalités demandées. Pour faciliter l'expérience utilisateur j'ai également bien veillé à insérer autant de boutons que nécessaire. J'ai créer une classe Test pour la classe Card nommée **CardTest**.
 
 Mes plus grandes difficultés se sont concentrées au niveau de la désérialisation des données (Card, couleurs).
-
 J'ai beaucoup apprécié ce projet qui a permis de m'exercer en Java de manière amusante et visuelle.
-
 Pour plus de détails sur chaque classe veuillez consulter la javadoc.
 
 
