@@ -4,7 +4,9 @@
 
 
 ## Analyse et modélisation
-S
+
+Schéma type UML de l'architecture du programme: https://github.com/melinnaa/tarot.project/blob/master/UML%20Tarot.pdf
+
 Au lancement de l'application, une interface s'affiche. À travers celle-ci nous pouvons circuler entre les différentes fonctionnalités: création d'une carte, consultation de la collection de cartes, tirage de cartes, paramètres d'affichage.
 
 Classes métiers:
