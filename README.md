@@ -8,7 +8,6 @@
 
 Au lancement de l'application, une interface s'affiche. À travers celle-ci nous pouvons circuler entre les différentes fonctionnalités: création d'une carte, consultation de la collection de cartes, tirage de cartes, paramètres d'affichage.
 
-
 Classes métiers:
 - la classe Card qui correspond à une carte permet de lui ajouter des propriétés passées en paramètres (nom, description, image), de modifier ses propriétés, de lui attribuer un numéro automatiquement, d'effectuer des vérifications (sur des propriétés), de supprimer la carte.
 - la classe Collection permet de trouver une carte par son nom ou son numéro, de trouver l'index d'une carte dans l'array, de remplacer une carte par une autre.
@@ -61,10 +60,12 @@ Celle-ci contient un array qui contient lui même toutes les cartes créées par
 Des méthodes permettent trouver une carte à partir de son nom ou de son numéro car ces propriétés sont uniques.
 
 ## Sauvegarde
-Nous sauvegardons le paquet de carte du joueur grâce à la sérialisation en JSON.
-Ce paquet contient des éléments de type Card.
-Pour sérialiser on utilise Gson.
-Pour désérialiser de même. J'ai implémenté un algorithme permettant de détecter en fonction des chaines de caractères du fichier json où est ce que commençait le code d'un objet Card.
+Nous sauvegardons le paquet de carte du joueur représenté par une ArrayList grâce à la **sérialisation en JSON**.
+Cet ArrayList contient des objets de type Card.
+
+Pour sérialiser et désérialiser, on utilisera la classe Gson.
+
+J'ai implémenté un algorithme permettant de détecter en fonction des chaines de caractères du fichier json où est-ce que commençait et finissait le code d'un objet Card.
 
 *À quels moments s'exécute la sérialisation/déserialisation ?*
 - Au démarrage de l'application (désérialisation seulement)
@@ -74,17 +75,18 @@ Pour désérialiser de même. J'ai implémenté un algorithme permettant de dét
 ## Interface graphique
 La classe Interface contient tous les panels nécessaires pour l'affichage de chaque section.
 Elle hérite de la classe JFrame et est décomposée en 2 panels: le menu (header), le panel principal.
-Composition des panels principaux:
-- Le menu contient les boutons nécessaire à la navigation entre les différentes fonctionnalités de l'application
-- Le panel principal contient tous les sous-panels dédiés à chaque section tous empilés les uns en-dessous des autres avec la CardLayout
 
-Les sous-panels sectionnaires:
-- CreationPanel: section de création de carte, l'utilisateur insère les propriétés qu'il souhaite et à la validation, une carte s'ajoute à sa collection
-- CollectionPanel: section de recherche et gestion dans la collection, l'utilisateur effectue sa recherche en fonction de certaines propriétés ou en défilant entre les cartes. Dans cette même section, il pourra supprimer une carte et ouvrir une interface d'édition de carte.
-- DrawPanel: section de tirage de cartes, stimulation d'un tirage du jeu de divination.
-- ManagerPanel: section de paramètres, l'utilisateur aura accès à des paramètres d'interfaçage de l'application.
+**Composition des panels principaux:**
+- Le **menu** contient les boutons nécessaire à la navigation entre les différentes fonctionnalités de l'application
+- Le **panel principal** contient tous les sous-panels dédiés à chaque section tous empilés les uns en-dessous des autres avec la **CardLayout**
 
-La classe abstraite PaintForm est un modèle pour les interfaces de création et d'édition de carte.
+**Les sous-panels sectionnaires:**
+- **CreationPanel:** section de création de carte, l'utilisateur insère les propriétés qu'il souhaite et à la validation, une carte s'ajoute à sa collection
+- **CollectionPanel:** section de recherche et gestion dans la collection, l'utilisateur effectue sa recherche en fonction de certaines propriétés ou en défilant entre les cartes. Dans cette même section, il pourra supprimer une carte et ouvrir une interface d'édition de carte.
+- **DrawPanel:** section de tirage de cartes, stimulation d'un tirage du jeu de divination.
+- **ManagerPanel:** section de paramètres, l'utilisateur aura accès à des paramètres d'interfaçage de l'application.
+
+La **classe abstraite PaintForm** est un modèle pour les interfaces de création et d'édition de carte.
 Ce modèle est sectionné en deux parties: 
 - une partie de visualisation de carte : **objet de classe CardView**
 - une partie de formulaire : **objet JPanel**
@@ -98,6 +100,7 @@ Si l'on souhaite rajouter une fonctionnalité il suffira de créer une méthode 
 
 ## Lecture du futur
 Une section supplémentaire a été créée pour permettre à l'utilisateur tirer des cartes de sa collection afin qu'elles puissent lui prédire son avenir.
+
 Un tirage ne se déclenche que lorsqu'il existe au moins 4 cartes dans la collection.
 
 **Quel tirage stimule le programme ?**
