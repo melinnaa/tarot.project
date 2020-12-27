@@ -8,6 +8,7 @@
 
 Au lancement de l'application, une interface s'affiche. À travers celle-ci nous pouvons circuler entre les différentes fonctionnalités: création d'une carte, consultation de la collection de cartes, tirage de cartes, paramètres d'affichage.
 
+
 Classes métiers:
 - la classe Card qui correspond à une carte permet de lui ajouter des propriétés passées en paramètres (nom, description, image), de modifier ses propriétés, de lui attribuer un numéro automatiquement, d'effectuer des vérifications (sur des propriétés), de supprimer la carte.
 - la classe Collection permet de trouver une carte par son nom ou son numéro, de trouver l'index d'une carte dans l'array, de remplacer une carte par une autre.
