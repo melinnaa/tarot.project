@@ -5,8 +5,8 @@
 
 ## Analyse et modélisation
 (Diagramme)
-
-<span style="color:blue">Au lancement de l'application,</span> une interface s'affiche. À travers celle-ci nous pouvons circuler entre les différentes fonctionnalités: création d'une carte, consultation de la collection de cartes, tirage de cartes, paramètres d'affichage.
+$\color{8884F5}{wesh}$
+Au lancement de l'application, une interface s'affiche. À travers celle-ci nous pouvons circuler entre les différentes fonctionnalités: création d'une carte, consultation de la collection de cartes, tirage de cartes, paramètres d'affichage.
 
 Classes métiers:
 - la classe Card qui correspond à une carte permet de lui ajouter des propriétés passées en paramètres (nom, description, image), de modifier ses propriétés, de lui attribuer un numéro automatiquement, d'effectuer des vérifications (sur des propriétés), de supprimer la carte.
