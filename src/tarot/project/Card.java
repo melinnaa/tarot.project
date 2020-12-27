@@ -2,9 +2,13 @@ package tarot.project;
 
 import java.io.File;
 import java.util.ArrayList;
-
+/**
+ * Card represents a card with that has a number, a name, an arcana, a description and an image.
+ * 
+ * @author melinna
+ *
+ */
 public class Card {
-	private static final long serialVersionUID = 1L;
 	
 	private int number;
 	private String name;
@@ -17,6 +21,13 @@ public class Card {
 			"the hanged man", "death", "temperance", "devil","the tower", "the star", "the moon",
 			"the sun", "judgement", "the world"};	 
 
+	/**
+	 * Constructs a card with the values passed in parameters
+	 * @param name			Card name
+	 * @param arcana		Card arcana
+	 * @param description	Card description
+	 * @param img			Card image
+	 */
 	public Card(String name, String arcana, String description, File img) {
 		addNumber();
 		setName(name);
@@ -27,67 +38,17 @@ public class Card {
 		Main.saveAndRefresh();
 	}
 	
-	public void setProperties(String name, String arcana, String description, File img) {
-		setName(name);
-		setArcana(arcana);
-		setDescription(description);
-		setImage(img);
-		
-	}
-	
-	public void setCard() {
-		
-	}
-	
-	public void setName(String name) {
-		if (name.equals(this.name) || !isNameUsed(name)) {
-			this.name = name;
-		}
-		Main.saveAndRefresh();
-	}
-	
-	public void setArcana(String arcana) {
-		if (isArcana(arcana)) {
-			this.arcana = arcana;
-		}
-		Main.saveAndRefresh();
-	}
-	
-	public String getName() {
-		return this.name;
-	}
-	
-	public Integer getNumber() {
-		return this.number;
-	}
-
-	public String getArcana() {
-		return this.arcana;
-	}
-	
-	public String getDescription() {
-		return this.description;
-	}
-	
-	private void createCard() {
-		
-	}
-	
-	/*private void changeCard() {
-		setNumber();
-		setName();
-		setDescription();
-	}*/
-	
-	
+	/**
+	 * Add a number during the card creation
+	 */
 	private void addNumber() {
 		
 		//If there is a least one card in the deck
-		if (Main.allCards != null) {
+		if (Collection.allCards != null) {
 			
 			//Creation of an array of card numbers 
 			ArrayList<Integer> cardNbs = new ArrayList<>();
-			for (Card card: Main.allCards) {
+			for (Card card: Collection.allCards) {
 				cardNbs.add(card.getNumber());		
 			}
 			
@@ -112,63 +73,166 @@ public class Card {
 		}
 	}
 	
-	
-	public void setDescription(String description) {
-		this.description = description;
-		Main.saveAndRefresh();
-	}
-	
-	public void setImage(File img) {
-		this.image = img;
-		Main.saveAndRefresh();
-	}
-	
+	/**
+	 * Add a card in the user collection
+	 */
 	private void addCard() {
-		Main.allCards.add(this);
+		Collection.allCards.add(this);
 	}
 	
+	/**
+	 * Test if the name passed in parameter is already used
+	 * @param testName		the name to test 
+	 * @return a boolean
+	 */
 	public static boolean isNameUsed(String testName) {
 		ArrayList<String> allNames = new ArrayList<>();
-		for (Card card : Main.allCards) {
+		for (Card card :Collection.allCards) {
 			allNames.add(card.getName());
 		}
 		if (allNames.contains(testName)) {
-			System.out.println("This name is already used");
 			return true;
 		}
 		return false;
 	}
 	
+	/**
+	 * Test if the string passed in parameter correspond to an arcana
+	 * @param testArcana		the string to test
+	 * @return
+	 */
 	public static boolean isArcana(String testArcana) {
 		for (int i=0; i<arcanas.length;i++) {
 			if (arcanas[i].equals(testArcana.toLowerCase())) {
 				return true;
 			}
 		}
-		System.out.println("The input do not correspond to an arcana");
 		return false;
 	}
 	
-
+	/**
+	 * Delete the current card from the user collection
+	 */
 	public void deleteCard() {
 		
-		if (Main.allCards.size()-1>0) {
-			Interface.searchInterf.nextCard();
+		Collection.allCards.remove(this);
+		Main.saveAndRefresh();
+		
+		if (Collection.allCards.size()>0) {			
+			CollectionPanel.nextCard();
 		}
 		
 		else {
-			Interface.searchInterf.displayPanel.name = "";
-			Interface.searchInterf.displayPanel.arcana = "";
-			Interface.searchInterf.displayPanel.description = "";
-			Interface.searchInterf.displayPanel.image = null;
-			Interface.searchInterf.displayPanel.imgLabel.setIcon(null);
+			CollectionPanel.currCard=null;
+			CollectionPanel.cardIndex=0;
+			CollectionPanel.cardView.name = "";
+			CollectionPanel.cardView.arcana = "";
+			CollectionPanel.cardView.description = "";
+			CollectionPanel.cardView.image = null;
+			CollectionPanel.cardView.imgLabel.setIcon(null);
 			
-			Interface.searchInterf.repaint();
+			CollectionPanel.cardView.repaint();
+		}		
+	}
+	
+	/**
+	 * Test if a card can be created with the name and the arcana passed in parameters
+	 * @param name		the name to test
+	 * @param arcana	the arcana to  test
+	 * @return			true if the the name and the arcana are available
+	 */
+	public static boolean canBeCreated(String name, String arcana, String description, File img) {
+		if (Card.isNameUsed(name) || name.equals("") || description.equals("") || img==null) {
+			return false;
+		}		
+		else if (!Card.isArcana(arcana)) {
+			return false;
 		}
-		
-		Main.allCards.remove(this);
+		return true;
+	}
+	
+	/**
+	 * Test if a card can be updated with the name and the arcana passed in parameters
+	 * @param name		the name to test
+	 * @param arcana	the arcana to  test
+	 * @return			true if the the name and the arcana are available
+	 */
+	public boolean canBeUpdated(String name, String arcana, String description, File img) {
+		if (!name.equals(this.name) && Card.isNameUsed(name) || description.equals("") || img==null) {
+			return false;
+		}		
+		else if (!Card.isArcana(arcana)) {
+			return false;
+		}
+		return true;
+	}
+	
+	/**
+	 * Set the card properties with the values passed in parameters
+	 * @param name			new name
+	 * @param arcana		new arcana
+	 * @param description	new description
+	 * @param img			new image
+	 */
+	public void setProperties(String name, String arcana, String description, File img) {
+		setName(name);
+		setArcana(arcana);
+		setDescription(description);
+		setImage(img);
 		Main.saveAndRefresh();
-	}	
+	}
+	
+	/**
+	 * Set the card name
+	 * @param name		new name
+	 */
+	public void setName(String name) {
+		if (!isNameUsed(name)) {
+			this.name = name;
+		}
+	}
+	
+	/**
+	 * Set the card arcana
+	 * @param arcana	new arcana
+	 */
+	public void setArcana(String arcana) {
+		if (isArcana(arcana)) {
+			this.arcana = arcana;
+		}
+	}
+	
+	/**
+	 * Set the card description
+	 * @param description	new description
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	/**
+	 * Set the card image
+	 * @param img	new img
+	 */
+	public void setImage(File img) {
+		this.image = img;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public Integer getNumber() {
+		return this.number;
+	}
+
+	public String getArcana() {
+		return this.arcana;
+	}
+	
+	public String getDescription() {
+		return this.description;
+	}
 	
 	public File getImage() {
 		return this.image;

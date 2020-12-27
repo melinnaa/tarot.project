@@ -8,16 +8,36 @@ import java.util.ArrayList;
 
 import com.google.gson.*;
 
-public class Main {
-	
-	public static ArrayList<Card> allCards = new ArrayList<Card>();
-	
+/**
+ * Launch the application
+ * Contain the main methods
+ *
+ */
+public class Main {	
+	/**
+	 * Fill the collection of cards with the ones stored in a json file
+	 * Displays the window with it interface
+	 * @param args
+	 */
 	public static void main(String ...args) {
-		deserialize();   
+		deserializeCards();   
 		new Interface();
     }
+	
+	/**
+	 * Save the card collection in the json file
+	 * Refresh the card collection with new values
+	 */
+	public static void saveAndRefresh() {
+		Main.serializeCards(Collection.allCards);
+		Main.deserializeCards();
+	}
 	 
-	public static void serialize(ArrayList<Card> cards) {
+	/**
+	 * Save the list of cards in json data
+	 * @param cards		List of cards to save
+	 */
+	public static void serializeCards(ArrayList<Card> cards) {
 		Gson gson = new Gson();
 		
 		// 1. Java object to JSON file
@@ -25,29 +45,29 @@ public class Main {
             gson.toJson(cards, writer);
         } catch (IOException e) {
             e.printStackTrace();
-        }	    
-	       
-		// 2. Java object to JSON string
-	    String jsonInString = gson.toJson(cards);
-	    System.out.println(jsonInString);
+        }	   
 	}
 	
-	
-	public static void deserialize() {
+	/**
+	 * Refresh the card collection with json data
+	 */
+	public static void deserializeCards() {
 		Gson gson = new Gson();
 		
 		try {		
 			BufferedReader reader = new BufferedReader(new FileReader("all_user_cards.json"));
 			
 			try {
+				//We read the json string to identify each Card object.
 				StringBuilder sb =  new StringBuilder();
 				String line;
 				while((line = reader.readLine()) != null) {
 					sb.append(line);
 				}
-				
+				//Array to stock each card identified
 				ArrayList<Card> cards = new ArrayList<>();
 				
+				//Loop that enables to identify each Card object in the json string
 				while (sb.indexOf("{")!=-1) {	
 					int idStart= sb.indexOf("{");
 					int idEnd;
@@ -69,7 +89,7 @@ public class Main {
 							break;
 						}
 					}
-					System.out.println(sb.substring(idStart, idEnd+1));
+				
 					String jsonCard = sb.substring(idStart, idEnd+1);
 					sb.delete(idStart, idEnd+1);
 					
@@ -79,7 +99,9 @@ public class Main {
 				}
 				
 				reader.close();
-				allCards = cards;
+				
+				//We overwrite the current card collection with the one contained in the json file.
+				Collection.allCards = cards;
 			
 				
 			} catch (IOException e) {
@@ -92,11 +114,5 @@ public class Main {
 			e1.printStackTrace();
 		} 
 	}
-	
-	public static void saveAndRefresh() {
-		Main.serialize(Main.allCards);
-		Main.deserialize();
-	}
-
 
 }

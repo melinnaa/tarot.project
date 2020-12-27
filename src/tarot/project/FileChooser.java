@@ -10,13 +10,22 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 
+/**
+ * Enables the user to upload a local file
+ *
+ */
 public class FileChooser {
 	public File file;
 	public int response;
-	public JFileChooser chooser = new JFileChooser(".");
+	public JFileChooser chooser = new JFileChooser("./resources");
 	public ImageIcon icon;
+	public boolean success;
 	
-	public FileChooser(DisplayPanel displayPanel){
+	/**
+	 * Choose a file to upload
+	 * @param displayPanel	the panel that will display the file selected
+	 */
+	public FileChooser(CardView cardView){
 		chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 		response = chooser.showOpenDialog(null);
 		
@@ -25,24 +34,17 @@ public class FileChooser {
 			String mimeType = URLConnection.guessContentTypeFromName(file.getName());
 			if (mimeType!=null) {
 				if (mimeType.equals("image/jpeg") || mimeType.equals("image/png")) {
-					try {
-						BufferedImage image = ImageIO.read(file);
-						icon = new ImageIcon(image);
-						displayPanel.imgLabel.setIcon(icon);
-						displayPanel.image = file;
-						
-					} catch (IOException e) {
-						e.printStackTrace();
-					} 
+					 cardView.setCardImage(file);
+					 success=true;
 				}
 				
 				else {
-					Interface.creationInterf.getImgBtn().setForeground(Color.RED);
+					success=false;
 				}
 			}
 			
 			else {
-				Interface.creationInterf.getImgBtn().setForeground(Color.RED);
+				success=false;
 			}
 		}
 	}	
