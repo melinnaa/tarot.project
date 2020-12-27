@@ -21,6 +21,7 @@ Pour plus de détails sur l'architecture de l'interface graphique aller à #Inte
 ## Système de carte basique
 
 Le système de carte basique se retrouve dans la classe Card.
+
 Une carte aura comme propriétés: 
 - un nom
 - un numéro
